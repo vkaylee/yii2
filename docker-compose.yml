@@ -1,0 +1,30 @@
+version: "3.5"
+volumes:
+  vendor:
+services:
+  php:
+    build:
+      context: .
+      args:
+        YII_ENV:
+    environment:
+      TERM:
+      PHP_ENABLE_XDEBUG:
+      PHP_XDEBUG_MODE:
+      PHP_OPCACHE_VALIDATE_TIMESTAMP:
+      PHP_OPCACHE_REVALIDATE_FREQ:
+      KEYCLOAK_BASEURL:
+      KEYCLOAK_REALMS:
+      KEYCLOAK_CLIENT_ID:
+      KEYCLOAK_CLIENT_SECRET:
+      YII_ENV:
+    volumes:
+      - type: bind
+        source: .
+        target: /app
+      - type: volume
+        source: vendor
+        target: /app/vendor
+    user: ${USER_UID}:${USER_GID}
+    ports:
+    - 8080:8080
