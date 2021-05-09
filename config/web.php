@@ -43,6 +43,7 @@ $config = [
             ],
         ],
         'db' => $db,
+        # https://www.yiiframework.com/doc/api/2.0/yii-web-urlmanager
         'urlManager' => [
             'showScriptName' => false,
             'enablePrettyUrl' => true,
